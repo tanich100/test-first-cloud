@@ -1,11 +1,4 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/testcloud-431820/hello-cloud-function', '.']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/testcloud-431820/hello-cloud-function']
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['functions', 'deploy', 'hello_http', '--runtime', 'python39', '--trigger-http', '--allow-unauthenticated', '--entry-point', 'hello_http', '--source', '.']
-images:
-- 'gcr.io/testcloud-431820/hello-cloud-function'
-options:
-  logging: CLOUD_LOGGING_ONLY
+
